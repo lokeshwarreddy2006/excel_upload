@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: com.pimd.excelupload
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: T23
+          url: http://s4hanat23:4000
+        app:
+          name: /PIMD/EXCELUPLOAD
+          description: excel upload
+          package: /PIMD/MDG_SM_DM
+          transport: T23K000049
+        exclude:
+          - /test/

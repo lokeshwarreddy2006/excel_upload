@@ -1,0 +1,145 @@
+<mvc:View controllerName="com.pimd.excelupload.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+    <Page id="page" title="{i18n>title}">
+        <content >
+            <!-- UI Filters -->
+			<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="ServiceMasterSet" persistencyKey="SmartFilter_Explored" showClearOnFB="true">
+				<smartFilterBar:controlConfiguration>
+                    <smartFilterBar:ControlConfiguration  key="ServCategory"  index="1" groupId="_BASIC" visibleInAdvancedArea="true"/>
+                    <smartFilterBar:ControlConfiguration  key="SubCategory"  index="2" groupId="_BASIC" visibleInAdvancedArea="true"/>
+				    <smartFilterBar:ControlConfiguration  key="Class" index="3"  groupId="_BASIC"  visibleInAdvancedArea="true"/>
+                    <smartFilterBar:ControlConfiguration  key="UnspscCode" index="4"  groupId="_BASIC"  visibleInAdvancedArea="true"/>
+                    <smartFilterBar:ControlConfiguration  key="IsicCode" index="5"  groupId="_BASIC"  visibleInAdvancedArea="true"/>
+				</smartFilterBar:controlConfiguration>
+			</smartFilterBar:SmartFilterBar>
+            <!-- smart table with necessary fields -->
+			<smartTable:SmartTable id="idSmartTable" entitySet="ServiceMasterSet" smartFilterId="smartFilterBar"
+			tableType="ResponsiveTable"  
+			useVariantManagement="true" useTablePersonalisation="false" header="Taxonomy Records"
+			showRowCount="true"  enableAutoBinding="true" 
+			demandPopin="true" class="sapUiResponsiveContentPadding">
+                <smartTable:customToolbar >
+                    <OverflowToolbar design="Transparent">
+                    <ToolbarSpacer />
+                    <u:FileUploader
+			id="fileUploader"
+			sameFilenameAllowed="true"
+			name="myFileUpload"
+			fileType="XLSX,xlsx"
+			buttonOnly="true" buttonText="Upload"
+			tooltip="select file to upload"
+			change="onUpload"/>
+			<Button id="idDelete" text="Delete" press="onDeleteRow" enabled="false"></Button>
+			<Button text="Create" press="onCreatePress" ></Button>
+                    </OverflowToolbar>
+                </smartTable:customToolbar>
+
+				<Table id="TableId" growing="true" growingScrollToLoad="true" sticky="ColumnHeaders,HeaderToolbar" 
+				mode="MultiSelect" alternateRowColors="true" selectionChange="onSelectionChange">
+			<columns>
+						<Column id="column0" hAlign="Begin" width="8%">
+							<customData>
+								<core:CustomData key="p13nData"
+                                   value='\{"columnKey": "ServCategory","columnIndex":"0","leadingProperty":"ServCategory", "sortProperty": "ServCategory", "filterProperty": "ServCategory"}'
+                                />
+							</customData>
+							<Text text="{i18n>servCategory}" />
+						</Column>
+						<Column id="column1" hAlign="Begin" width="7%">
+							<customData>
+								<core:CustomData key="p13nData"
+                                   value='\{"columnKey": "ServCategoryT","columnIndex":"1","leadingProperty":"ServCategoryT", "sortProperty": "ServCategoryT", "filterProperty": "ServCategoryT"}'
+                                />
+							</customData>
+							<Text text="{i18n>servCategoryT}" />
+						</Column>
+						<Column id="column2" hAlign="Begin" width="8%">
+							<customData>
+								<core:CustomData key="p13nData"
+                                    value='\{"columnKey": "SubCategory","columnIndex":"2","leadingProperty":"SubCategory", "sortProperty": "SubCategory", "filterProperty": "SubCategory"}'
+                                />
+							</customData>
+							<Text text="{i18n>subCategory}" />
+						</Column>
+						<Column id="column3" hAlign="Begin">
+							<customData>
+								<core:CustomData key="p13nData"
+                                    value='\{"columnKey": "SubCategoryT","columnIndex":"3","leadingProperty":"SubCategoryT", "sortProperty": "SubCategoryT", "filterProperty": "SubCategoryT"}'
+                                />
+							</customData>
+							<Text text="{i18n>subCategoryT}" />
+						</Column>
+						<Column id="column4" hAlign="Begin">
+							<customData>
+								<core:CustomData key="p13nData"
+                                    value='\{"columnKey": "Class","columnIndex":"4","leadingProperty":"Class", "sortProperty": "Class", "filterProperty": "Class"}'
+                                />
+							</customData>
+							<Text text="{i18n>class}" />
+						</Column>
+						<Column id="column5" hAlign="Begin">
+							<customData>
+								<core:CustomData key="p13nData"
+                                    value='\{"columnKey": "ClassT","columnIndex":"5","leadingProperty":"ClassT", "sortProperty": "ClassT", "filterProperty": "ClassT"}'
+                                />
+							</customData>
+							<Text text="{i18n>classT}" />
+						</Column>
+						<Column id="column6" hAlign="Begin" width="8%">
+							<customData>
+								<core:CustomData key="p13nData"
+                                    value='\{"columnKey": "UnspscCode","columnIndex":"6","leadingProperty":"UnspscCode", "sortProperty": "UnspscCode", "filterProperty": "UnspscCode"}'
+                                />
+							</customData>
+							<Text text="{i18n>unspscCode}" />
+						</Column>
+						<Column id="column7" hAlign="Begin">
+							<customData>
+								<core:CustomData key="p13nData"
+                                    value='\{"columnKey": "UnspscCodeT","columnIndex":"7","leadingProperty":"UnspscCodeT", "sortProperty": "UnspscCodeT", "filterProperty": "UnspscCodeT"}'
+                                />
+							</customData>
+							<Text text="{i18n>unspscCodeT}" />
+						</Column>
+						<Column id="column8" hAlign="Begin">
+							<customData>
+								<core:CustomData key="p13nData"
+                                    value='\{"columnKey": "IsicCode","columnIndex":"8","leadingProperty":"IsicCode", "sortProperty": "IsicCode", "filterProperty": "IsicCode"}'
+                                />
+							</customData>
+							<Text  text="{i18n>isicCode}" />
+						</Column>
+						<Column id="column9" hAlign="Begin">
+							<customData>
+								<core:CustomData key="p13nData"
+                                    value='\{"columnKey": "IsicCodeT","columnIndex":"9","leadingProperty":"IsicCodeT", "sortProperty": "IsicCodeT", "filterProperty": "IsicCodeT"}'
+                                />
+							</customData>
+							<Text  text="{i18n>isicCodeT}" />
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem  vAlign="Middle">
+							<cells>
+								<Text  text="{ServCategory}"/>
+								<Text  text="{ServCategoryT}"/>
+								<Text  text="{SubCategory}" />
+								<Text  text="{SubCategoryT}" />
+								<Text  text="{Class}"/>
+								<Text  text="{ClassT}"/>
+								<Text  text="{UnspscCode}"/>
+								<Text  text="{UnspscCodeT}"/>
+								<Text  text="{IsicCode}"/>
+								<Text  text="{IsicCodeT}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</smartTable:SmartTable>
+        </content>
+    </Page>
+</mvc:View>

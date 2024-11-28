@@ -1,0 +1,71 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<Dialog title="Create" class="sapUiSizeCompact" contentWidth="35%" afterClose="onAfterCloseF4Help" draggable="true">
+		<content>
+			<VBox class="sapUiSmallMargin formWidthClass">
+				<!--formWidthClass-->
+				<f:SimpleForm
+			editable="true"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+					<f:content>
+						<Label text="Service Category" required="true" />
+						<Input value="{HomeModel>/ServCategory}" placeholder="Serice Category"
+						showSuggestion="true" 
+						suggestionItems="{/ServCatVHSet}">
+							<suggestionItems>
+								<core:Item text="{Astyp}"/>
+							</suggestionItems>
+						</Input>
+						<Label text="Sub Category" required="true" />
+						<Input value="{HomeModel>/SubCategory}" placeholder="Sub Category"
+						showSuggestion="true" 
+						suggestionItems="{/SubCategVHSet}" startSuggestion="2">
+							<suggestionItems>
+								<core:Item text="{SubCategory}" />
+							</suggestionItems></Input>
+						<Label text="Class" required="true" />
+						<Input value="{HomeModel>/Class}" placeholder="Class" showSuggestion="true" 
+						suggestionItems="{/ClassVHSet}" startSuggestion="2">
+							<suggestionItems>
+								<core:Item text="{Klpos}" />
+							</suggestionItems></Input>
+						<Label text="Unspsc Code" required="true" />
+						<Input value="{HomeModel>/UnspscCode}" placeholder="Unspsc Code" showSuggestion="true" 
+						suggestionItems="{/UPSCCodeVHSet}" startSuggestion="2">
+							<suggestionItems>
+								<core:Item text="{Matkl}" />
+							</suggestionItems></Input>
+						<Label text="ISIC Code" required="true" />
+						<Input value="{HomeModel>/IsicCode}" placeholder="Isic Code" showSuggestion="true" 
+						suggestionItems="{/ISICCodeVHSet}" startSuggestion="2">
+							<suggestionItems>
+								<core:Item text="{IsicCode}" />
+							</suggestionItems></Input>
+					</f:content>
+				</f:SimpleForm>
+			</VBox>
+		</content>
+		<beginButton>
+			<Button text="Create" press="onSaveRequest" type="Emphasized"></Button>
+		</beginButton>
+		<endButton>
+			<Button text="Cancel" press="onCancel"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
